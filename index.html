@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máscaras de Sangue</title>
+    <style>
+        /* Estilo geral da página */
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Título fixado no topo */
+        h1 {
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 3em;
+            color: #f2b400;
+            text-shadow: 2px 2px 5px #ff6600;
+            margin-top: 0;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Texto adicional ou instruções */
+        p {
+            font-size: 1.5em;
+            color: #ddd;
+            margin-top: 100px;
+        }
+
+        /* Estilo para a mensagem de alerta */
+        .alert {
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        /* Estilo para a música de recompensa */
+        .reward {
+            color: #00ff00;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        /* Estilo para a imagem da ocarina */
+        img {
+            width: 200px;
+            height: auto;
+            margin-top: 50px;
+            transition: transform 0.2s ease-in-out; /* Adiciona transição para suavizar a animação */
+        }
+
+        /* Animação para quando o botão for pressionado */
+        .animate {
+            animation: pulse 0.3s ease-out;
+        }
+
+        /* Definindo a animação pulse (pulsar) */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Aumenta um pouco o tamanho */
+            }
+            100% {
+                transform: scale(1); /* Retorna ao tamanho original */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <img id="ocarinaImage" src="ocarina.png" alt="Ocarina">
+    <div class="reward" id="rewardMessage" style="display: none;">Parabéns! Você acertou a sequência!</div>
+
+    <script src="script.js"></script>
+    <script>
+        // Função para adicionar a animação à ocarina toda vez que uma tecla for pressionada
+        function animarOcarina() {
+            const ocarina = document.getElementById('ocarinaImage');
+            ocarina.classList.add('animate');
+
+            // Remover a animação após 0.3 segundos (tempo da animação)
+            setTimeout(() => {
+                ocarina.classList.remove('animate');
+            }, 300);
+        }
+
+        // Evento para capturar teclas pressionadas
+        document.addEventListener('keydown', () => {
+            animarOcarina(); // Chama a função de animação sempre que uma tecla for pressionada
+        });
+    </script>
+</body>
+</html>

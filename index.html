@@ -59,12 +59,28 @@
             margin-top: 30px;
         }
 
-        /* Estilo para a imagem da ocarina */
+        /* Estilo para a imagem da tela1.png */
         img {
+            width: 35%; /* Faz a imagem ocupar toda a largura disponível */
+            max-width: 1200px; /* Define um tamanho máximo para a imagem */
+            height: auto; /* Mantém a proporção da imagem */
+            margin-top: 50px;
+            transition: transform 0.2s ease-in-out; /* Adiciona transição para suavizar a animação */
+        }
+
+        /* Estilo para a imagem da tela1 com fade-in */
+        #telaImage {
+            opacity: 0; /* Inicialmente invisível */
+            transition: opacity 0.5s ease-in-out; /* Efeito de fade-in */
+        }
+
+        /* Estilo para a imagem da ocarina */
+        #ocarinaImage {
             width: 200px;
             height: auto;
             margin-top: 50px;
-            transition: transform 0.2s ease-in-out; /* Adiciona transição para suavizar a animação */
+            opacity: 0; /* Inicialmente invisível */
+            transition: opacity 0.5s ease-in-out; /* Efeito de fade-in */
         }
 
         /* Animação para quando o botão for pressionado */
@@ -88,6 +104,7 @@
     </style>
 </head>
 <body>
+    <img id="telaImage" src="tela1.png" alt="Tela 1">
     <img id="ocarinaImage" src="ocarina.png" alt="Ocarina">
     <div class="reward" id="rewardMessage" style="display: none;">Parabéns! Você acertou a sequência!</div>
 
@@ -104,9 +121,27 @@
             }, 300);
         }
 
+        // Função para exibir a ocarina com fade-in
+        function mostrarOcarina() {
+            const ocarina = document.getElementById('ocarinaImage');
+            ocarina.style.opacity = 1; // Torna a ocarina visível
+        }
+
+        // Função para exibir a tela1 com fade-in
+        function mostrarTela1() {
+            const tela1 = document.getElementById('telaImage');
+            tela1.style.opacity = 1; // Torna a tela1 visível com fade-in
+        }
+
+        // Evento para capturar cliques do mouse na página
+        document.addEventListener('click', () => {
+            mostrarTela1(); // Exibe a tela1 com fade-in após o clique
+        });
+
         // Evento para capturar teclas pressionadas
         document.addEventListener('keydown', () => {
             animarOcarina(); // Chama a função de animação sempre que uma tecla for pressionada
+            mostrarOcarina(); // Exibe a ocarina com fade-in após a primeira tecla pressionada
         });
     </script>
 </body>
